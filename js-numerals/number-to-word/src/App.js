@@ -19,7 +19,10 @@ function App() {
         e.keyCode !== 8) ||
       e.keyCode === 190 ||
       e.keyCode === 69 ||
-      e.keyCode === 109
+      e.keyCode === 109 ||
+      e.keyCode === 107 ||
+      e.keyCode === 110 ||
+      e.keyCode === 188
     ) {
       e.preventDefault();
     }
@@ -28,7 +31,7 @@ function App() {
   return (
     <div className={AppCSS.App}>
       <header>
-        <h1>number to words</h1>
+        <h1>numbers to words</h1>
       </header>
       <div className={AppCSS.container}>
         <div className={AppCSS.calculate}>

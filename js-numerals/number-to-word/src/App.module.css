@@ -6,13 +6,14 @@
 
 .App {
   height: 100vh;
-  background-color: rgb(94, 94, 94);
+  background-color: rgb(61, 60, 60);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 header {
   min-height: 50px;
   display: flex;
   justify-content: center;
-  background-color: #eee;
+  background-color: rgb(183, 225, 255);
   text-transform: uppercase;
   padding: 1rem;
   margin-bottom: 3rem;
@@ -22,13 +23,14 @@ header {
   justify-content: center;
 }
 .calculate {
-  width: 1000px;
+  width: 1000px;  
 }
 input {
   width: 100%;
   padding: 1rem 0.2rem;
   font-size: 2rem;
   margin-bottom: 3rem;
+  border-radius: 10px;
 }
 input:focus {
   border: 1px solid aqua;
@@ -36,10 +38,14 @@ input:focus {
 }
 .display {
   border: 2px solid rgb(105, 214, 214);
+  border-radius: 10px;
   padding: 1rem 0.2rem;
   font-size: 2rem;
+  font-weight: 500;
   text-align: center;
-  color:#fff;
+  text-transform: capitalize;
+  color: #000;
+  background-color: #fff;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
