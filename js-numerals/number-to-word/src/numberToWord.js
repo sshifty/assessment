@@ -3,7 +3,7 @@
     Made it in reverse order, so I can add the extra scale word depends the chunks order like so:
         -The first 3 digits cant be thousand just hundreds max so the first element of the array is empty, 4-6 digits is thousand and so on.
         
-*/ 
+*/
 
 const numbers = [
   null,
@@ -42,6 +42,10 @@ const decimals = [
 const scales = [null, "thousand", "million", "billion", "trillion"];
 
 const numberToWord = (num) => {
+  if (!(num || num === 0)) {
+    return null;
+  }
+  if (num === 0) return "zero";
   let final = [];
   let chunks = [];
   const numArr = String(num).split("");
@@ -51,7 +55,6 @@ const numberToWord = (num) => {
   while (from > 0) {
     let to = from;
     chunks.push(numArr.slice((from = Math.max(0, from - 3)), to));
-    
   }
   for (let i = 0; i < chunks.length; i++) {
     let temp = [];
