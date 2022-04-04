@@ -7,14 +7,16 @@ const MAX_NUMBER = 999999999999999;
 function App() {
   const [number, setNumber] = useState(null);
 
-  const forbiddenKeyCodes = [190, 69, 109, 107, 110, 188, 189];
+  const forbiddenKeys = ["+", "-", ",", ".", "e", "E"];
+
   const handleChange = (e) => {
     setNumber(e.target.value);
   };
+
   const blockKeyDown = (e) => {
     if (
       (Number(number + e.key) > MAX_NUMBER && e.keyCode !== 46) ||
-      forbiddenKeyCodes.includes(e.keyCode)
+      forbiddenKeys.includes(e.key)
     ) {
       e.preventDefault();
     }
