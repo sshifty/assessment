@@ -13,14 +13,11 @@ function App() {
     setNumber(e.target.value);
   };
 
+  const isCurrentNumberBigger = (e) => Number(number + e.key) > MAX_NUMBER;
+  const isKeyCodeBackSpace = (e) => e.keyCode === 46;
+  const isForbidden = (e) => forbiddenKeys.includes(e.key);
   const blockKeyDown = (e) => {
-    const isCurrentNumberBigger = Number(number + e.key) > MAX_NUMBER;
-    const isKeyCodeBackSpace = e.keyCode === 46;
-    const isForbidden=forbiddenKeys.includes(e.key);
-    if (
-      (isCurrentNumberBigger && !isKeyCodeBackSpace) ||
-      isForbidden
-    ) {
+    if ((isCurrentNumberBigger(e) && !isKeyCodeBackSpace(e)) || isForbidden(e)) {
       e.preventDefault();
     }
   };
