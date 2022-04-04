@@ -4,8 +4,8 @@
         -The first 3 digits cant be thousand just hundreds max so the first element of the array is empty, 4-6 digits is thousand and so on.
         
 */
-const HUNDRED_LENGTH=3;
-const DECIMAL_LENGTH=2;
+const HUNDRED_LENGTH = 3;
+const DECIMAL_LENGTH = 2;
 
 const numbers = [
   null,
@@ -44,27 +44,28 @@ const decimals = [
 const scales = [null, "thousand", "million", "billion", "trillion"];
 
 const numberToWord = (num) => {
-  if (!(num || num === 0)) {
+  if (!num) {
     return null;
   }
   if (Number(num) === 0) return "zero";
-  let final = [];
+  const final = [];
   let chunks = [];
+  let temp, decimal;
   const numArr = String(num).split("");
 
   //split into chunks from the end by 3
   let from = numArr.length;
   while (from > 0) {
-    let to = from;
+    const to = from;
     chunks.push(numArr.slice((from = Math.max(0, from - 3)), to));
   }
   for (let i = 0; i < chunks.length; i++) {
-    let temp = [];
-    let decimal = [];
-    let chunkLength = chunks[i].length;
+    temp = [];
+    decimal = [];
+    const chunkLength = chunks[i].length;
     let verifyScale = false; //if the chunk full of zeros dont put scale
     for (let j = 0; j < chunkLength; j++) {
-      let chunk = parseInt(chunks[i][j]); //parse it to number because to use it as index to get the number && for condition checking
+      const chunk = parseInt(chunks[i][j]); //parse it to number because to use it as index to get the number && for condition checking
       if (chunk) {
         verifyScale = true;
       }
@@ -141,8 +142,7 @@ const numberToWord = (num) => {
     }
   }
 
-  final = final.reverse().join(" ");
-  return final;
+  return final.reverse().join(" ");
 };
 
 module.exports = numberToWord;

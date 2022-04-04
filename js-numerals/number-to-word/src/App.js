@@ -5,7 +5,7 @@ import { useState } from "react";
 const MAX_NUMBER = 999999999999999;
 
 function App() {
-  const [number, setNumber] = useState(null);
+  const [number, setNumber] = useState("");
 
   const forbiddenKeys = ["+", "-", ",", ".", "e", "E"];
 
@@ -14,9 +14,12 @@ function App() {
   };
 
   const blockKeyDown = (e) => {
+    const isCurrentNumberBigger = Number(number + e.key) > MAX_NUMBER;
+    const isKeyCodeBackSpace = e.keyCode === 46;
+    const isForbidden=forbiddenKeys.includes(e.key);
     if (
-      (Number(number + e.key) > MAX_NUMBER && e.keyCode !== 46) ||
-      forbiddenKeys.includes(e.key)
+      (isCurrentNumberBigger && !isKeyCodeBackSpace) ||
+      isForbidden
     ) {
       e.preventDefault();
     }
