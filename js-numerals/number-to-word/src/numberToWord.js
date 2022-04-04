@@ -4,6 +4,8 @@
         -The first 3 digits cant be thousand just hundreds max so the first element of the array is empty, 4-6 digits is thousand and so on.
         
 */
+const HUNDRED_LENGTH=3;
+const DECIMAL_LENGTH=2;
 
 const numbers = [
   null,
@@ -45,7 +47,7 @@ const numberToWord = (num) => {
   if (!(num || num === 0)) {
     return null;
   }
-  if (num === 0) return "zero";
+  if (Number(num) === 0) return "zero";
   let final = [];
   let chunks = [];
   const numArr = String(num).split("");
@@ -66,7 +68,7 @@ const numberToWord = (num) => {
       if (chunk) {
         verifyScale = true;
       }
-      if (chunkLength === 3) {
+      if (chunkLength === HUNDRED_LENGTH) {
         if (j === 0) {
           if (chunk) {
             temp.push(numbers[chunk] + " hundred");
@@ -102,7 +104,7 @@ const numberToWord = (num) => {
             temp.push(numbers[chunk]);
           }
         }
-      } else if (chunkLength === 2) {
+      } else if (chunkLength === DECIMAL_LENGTH) {
         if (j === 0) {
           if (chunk === 1) {
             let tenChunk = parseInt(chunk + chunks[i][j + 1]);

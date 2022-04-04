@@ -1,40 +1,32 @@
-import AppCSS from "./App.module.css";
+import styles from "./App.module.css";
 import numberToWord from "./numberToWord";
 import { useState } from "react";
+
+const MAX_NUMBER = 999999999999999;
 
 function App() {
   const [number, setNumber] = useState(null);
 
+  const forbiddenKeyCodes = [190, 69, 109, 107, 110, 188, 189];
   const handleChange = (e) => {
-    if (e.target.value !== "") {
-      setNumber(Number(Number(e.target.value).toString()));
-    } else {
-      setNumber(null);
-    }
+    setNumber(e.target.value);
   };
   const blockKeyDown = (e) => {
     if (
-      (Number(number + e.key) > 999999999999999 &&
-        e.keyCode !== 46 &&
-        e.keyCode !== 8) ||
-      e.keyCode === 190 ||
-      e.keyCode === 69 ||
-      e.keyCode === 109 ||
-      e.keyCode === 107 ||
-      e.keyCode === 110 ||
-      e.keyCode === 188
+      (Number(number + e.key) > MAX_NUMBER && e.keyCode !== 46) ||
+      forbiddenKeyCodes.includes(e.keyCode)
     ) {
       e.preventDefault();
     }
   };
 
   return (
-    <div className={AppCSS.App}>
+    <div className={styles.app}>
       <header>
         <h1>numbers to words</h1>
       </header>
-      <div className={AppCSS.container}>
-        <div className={AppCSS.calculate}>
+      <div className={styles.container}>
+        <div className={styles.calculate}>
           <input
             value={number}
             type="number"
@@ -42,7 +34,7 @@ function App() {
             onKeyDown={blockKeyDown}
             placeholder="Enter your number here!"
           />
-          <div className={AppCSS.display}>
+          <div className={styles.display}>
             {numberToWord(number)
               ? numberToWord(number)
               : "And words will appear here!"}
