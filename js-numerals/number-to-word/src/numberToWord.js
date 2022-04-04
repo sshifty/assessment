@@ -1,48 +1,17 @@
+import {
+  DECIMAL_LENGTH,
+  HUNDRED_LENGTH,
+  numbers,
+  decimals,
+  scales,
+} from "./constants";
+
 /*
     The main idea is to seperate the number into 3 digit chunks.
     Made it in reverse order, so I can add the extra scale word depends the chunks order like so:
         -The first 3 digits cant be thousand just hundreds max so the first element of the array is empty, 4-6 digits is thousand and so on.
         
 */
-const HUNDRED_LENGTH = 3;
-const DECIMAL_LENGTH = 2;
-
-const numbers = [
-  null,
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-  "ten",
-  "eleven",
-  "twelve",
-  "thirteen",
-  "fourteen",
-  "fifteen",
-  "sixteen",
-  "seventeen",
-  "eighteen",
-  "nineteen",
-];
-const decimals = [
-  null,
-  null,
-  "twenty",
-  "thirty",
-  "forty",
-  "fifty",
-  "sixty",
-  "seventy",
-  "eighty",
-  "ninety",
-];
-const scales = [null, "thousand", "million", "billion", "trillion"];
-
 const numberToWord = (num) => {
   if (!num) {
     return null;
@@ -145,4 +114,4 @@ const numberToWord = (num) => {
   return final.reverse().join(" ");
 };
 
-module.exports = numberToWord;
+export default numberToWord;
