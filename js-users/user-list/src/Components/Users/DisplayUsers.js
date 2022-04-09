@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SingleUser from "./SingleUser";
 import ReactPaginate from "react-paginate";
-import styles from "./DisplayUsers.module.css"
+import styles from "./DisplayUsers.module.css";
 import "./Paginate.css";
 
 const DisplayUsers = ({ itemsPerPage }) => {
@@ -43,7 +43,7 @@ const DisplayUsers = ({ itemsPerPage }) => {
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={3}        
+        pageRangeDisplayed={3}
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
