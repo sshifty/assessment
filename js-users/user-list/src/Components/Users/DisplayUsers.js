@@ -36,7 +36,7 @@ const DisplayUsers = ({ itemsPerPage }) => {
     setItemOffset(newOffset);
   };
   return (
-    <div>
+    <div className={styles.displayUsers}>
       <SingleUser currentUsers={currentUsers} />
       <ReactPaginate
         className={"react-paginate"}
