@@ -1,4 +1,6 @@
-const SingleUser = () => {
+const SingleUser = (props) => {
+  const { currentUsers } = props;
+
   return <div></div>;
 };
 

@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <div className={styles.container}>
         <Routes>
-          <Route path="/" element={<DisplayUsers />} />
+          <Route path="/" element={<DisplayUsers itemsPerPage={10} />} />
           <Route path="/new" element={<UserCreateForm />} />
           <Route path="/:id/edit" element={<UserEditForm />} />
         </Routes>

@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import SingleUser from "./SingleUser";
+import ReactPaginate from "react-paginate";
+import styles from "./DisplayUsers.module.css"
+import "./Paginate.css";
 
-const DisplayUsers = () => {
-  const [users, setUsers] = useState(null);
-  const [currentUsers, setCurrentUsers] = useState(null);
+const DisplayUsers = ({ itemsPerPage }) => {
+  const [users, setUsers] = useState([]);
+  const [currentUsers, setCurrentUsers] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -19,8 +24,32 @@ const DisplayUsers = () => {
     };
     fetchUsers();
   }, []);
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentUsers(users.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(users.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, users]);
 
-  return <div></div>;
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % users.length;
+    setItemOffset(newOffset);
+  };
+  return (
+    <div>
+      <SingleUser currentUsers={currentUsers} />
+      <ReactPaginate
+        className={"react-paginate"}
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}        
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+      />
+    </div>
+  );
 };
 
 export default DisplayUsers;
