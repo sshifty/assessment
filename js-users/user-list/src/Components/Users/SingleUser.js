@@ -2,8 +2,27 @@ import moment from "moment";
 
 import styles from "./SingleUser.module.css";
 const SingleUser = (props) => {
-  const { currentUsers } = props;
+  const { currentUsers, fetchUsers } = props;
 
+  const changeStatus = async (user) => {
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        status: user.status === "active" ? "locked" : "active",
+      }),
+    };
+    try {
+      const data = await fetch(
+        "https://assessment-users-backend.herokuapp.com/users/" + user.id,
+        requestOptions
+      );
+      // const lol = await data.json();
+      fetchUsers();
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <div className={styles.singleUser}>
       <table>
@@ -30,10 +49,15 @@ const SingleUser = (props) => {
                   {moment(user.created_at).format("YYYY/MM/DD, HH:mm ")}
                 </td>
                 <td>
-                  <button className={`${styles.btn} ${styles.btnEdit}`}>Edit</button>
+                  <button className={`${styles.btn} ${styles.btnEdit}`}>
+                    Edit
+                  </button>
                 </td>
                 <td>
-                  <button className={`${styles.btn} ${styles.btnStatus}`}>
+                  <button
+                    onClick={() => changeStatus(user)}
+                    className={`${styles.btn} ${styles.btnStatus}`}
+                  >
                     {user.status === "locked" ? "Activate" : "Lock"}
                   </button>
                 </td>

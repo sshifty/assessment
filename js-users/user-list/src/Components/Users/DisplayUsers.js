@@ -9,19 +9,19 @@ const DisplayUsers = ({ itemsPerPage }) => {
   const [currentUsers, setCurrentUsers] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  const fetchUsers = async () => {
+    try {
+      const data = await fetch(
+        "https://assessment-users-backend.herokuapp.com/users"
+      );
+      const fetchedData = await data.json();
+      setUsers(fetchedData);
+    } catch (e) {
+      //do something when there is a network error
+      console.log(e);
+    }
+  };
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const data = await fetch(
-          "https://assessment-users-backend.herokuapp.com/users"
-        );
-        const fetchedData = await data.json();
-        setUsers(fetchedData);
-      } catch (e) {
-        //do something when there is a network error
-        console.log(e);
-      }
-    };
     fetchUsers();
   }, []);
   useEffect(() => {
@@ -37,7 +37,7 @@ const DisplayUsers = ({ itemsPerPage }) => {
   };
   return (
     <div className={styles.displayUsers}>
-      <SingleUser currentUsers={currentUsers} />
+      <SingleUser currentUsers={currentUsers} fetchUsers={fetchUsers} />
       <ReactPaginate
         className={"react-paginate"}
         breakLabel="..."
