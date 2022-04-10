@@ -15,7 +15,7 @@ const DisplayUsers = ({ itemsPerPage }) => {
         "https://assessment-users-backend.herokuapp.com/users"
       );
       const fetchedData = await data.json();
-      setUsers(fetchedData);
+      setUsers(fetchedData.sort((a, b) => a.id - b.id));
     } catch (e) {
       //do something when there is a network error
       console.log(e);
