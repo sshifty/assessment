@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DisplayUsers from "./Users/DisplayUsers";
 import UserCreateForm from "./Forms/UserCreateForm";
-import UserEditForm from "./Forms/UserEditForm";
 import styles from "./App.module.css";
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DisplayUsers itemsPerPage={10} />} />
           <Route path="/new" element={<UserCreateForm />} />
-          <Route path="/:id/edit" element={<UserEditForm />} />
+          <Route path="/:userId/edit" element={<UserCreateForm />} />
         </Routes>
       </div>
     </BrowserRouter>

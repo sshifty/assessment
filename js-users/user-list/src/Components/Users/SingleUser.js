@@ -17,7 +17,7 @@ const SingleUser = (props) => {
         "https://assessment-users-backend.herokuapp.com/users/" + user.id,
         requestOptions
       );
-      // const lol = await data.json();
+      
       fetchUsers();
     } catch (e) {
       console.log(e);

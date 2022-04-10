@@ -1,10 +1,33 @@
-import { useState } from "react";
-import styles from "./Form.module.css";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Defaultform from "./DefaultForm";
 
 const UserCreateForm = () => {
   const [errors, setErrors] = useState({});
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
+  const { userId } = useParams();
 
+  const apiUrl = userId
+    ? `https://assessment-users-backend.herokuapp.com/users/${userId}.json`
+    : "https://assessment-users-backend.herokuapp.com/users/";
+  const fetchUser = async () => {
+    try {
+      console.log(userId);
+      const data = await fetch(apiUrl);
+      const fetchedData = await data.json();
+      const { first_name, last_name } = fetchedData;
+      setUser({ first_name, last_name });
+    } catch (e) {
+      //do something when there is a network error
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    if (userId) {
+      fetchUser();
+    }
+  }, []);
   const handleChange = (e) => {
     const { id, value } = e.target;
     setUser((prevState) => {
@@ -17,22 +40,35 @@ const UserCreateForm = () => {
   const onSubmit = async (e) => {
     const { first_name, last_name } = user;
     e.preventDefault();
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        status: "active",
-        first_name,
-        last_name,
-      }),
-    };
+    let requestOptions = {};
+    if (!userId) {
+      requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          status: "active",
+          first_name,
+          last_name,
+        }),
+      };
+    } else {
+      requestOptions = {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(user),
+      };
+    }
+
     try {
-      const data = await fetch(
-        "https://assessment-users-backend.herokuapp.com/users/",
-        requestOptions
-      );
-      const res = await data.json();
+      const data = await fetch(apiUrl, requestOptions);
+
       if (!data.ok) {
+        //Server not providing json with success put request, unless the request is faulty
+        const res = await data.json();
         let errorTemp = {};
         for (let key of Object.keys(res)) {
           errorTemp = {
@@ -43,40 +79,20 @@ const UserCreateForm = () => {
         setErrors(errorTemp);
       } else {
         setErrors({});
+        navigate("/");
       }
     } catch (e) {
       console.log(e);
     }
   };
-  console.log(errors);
+  console.log(user);
   return (
-    <div className={styles.formContainer}>
-      <form onSubmit={onSubmit}>
-        <div className={styles.inputContainer}>
-          <label htmlFor="first_name">
-            First Name: <span>{errors.first_name}</span>
-          </label>
-          <input
-            onChange={handleChange}
-            type="text"
-            id="first_name"
-            maxLength={20}
-          />
-        </div>
-        <div className={styles.inputContainer}>
-          <label htmlFor="last_name">
-            Last Name: <span>{errors.last_name}</span>
-          </label>
-          <input
-            onChange={handleChange}
-            type="text"
-            id="last_name"
-            maxLength={20}
-          />
-        </div>
-        <button>Submit</button>
-      </form>
-    </div>
+    <Defaultform
+      onSubmit={onSubmit}
+      handleChange={handleChange}
+      errors={errors}
+      user={user}
+    />
   );
 };
 
