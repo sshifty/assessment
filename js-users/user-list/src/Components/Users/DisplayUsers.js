@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SingleUser from "./SingleUser";
+import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import styles from "./DisplayUsers.module.css";
 import "./Paginate.css";
@@ -38,6 +39,9 @@ const DisplayUsers = ({ itemsPerPage }) => {
   return (
     <div className={styles.displayUsers}>
       <SingleUser currentUsers={currentUsers} fetchUsers={fetchUsers} />
+      <Link to="new">
+        <button>Add Member</button>
+      </Link>
       <ReactPaginate
         className={"react-paginate"}
         breakLabel="..."
