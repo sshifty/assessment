@@ -1,9 +1,75 @@
-.navContainer{
-    grid-area: nav;
-    background-color: var(--nav-purple);
+.navContainer {
+  grid-area: nav;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  background-color: var(--nav-purple);
+}
+.navLeft {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.businessContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  word-break: break-word;
+}
+.businessContainer h1 {
+  font-size: 1.3rem;
+  padding: 0.5rem 0;
+  color: #fff;
+}
+#logo {
+  width: 60px;
+  height: 100%;
+  color: #fff;
 }
 
-.sideMenuContainer{
-    grid-area:side;
-    background-color: aqua;
+.searchContainer {
+  flex: 1;
+  display: flex;
+  padding: 0.3rem;
+  border-radius: 5px;
+  background-color: #fff;
+  color: var(--main-grey);
+}
+
+.searchContainer input {
+  border: none;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--main-text);
+}
+input[type="text"]:focus {
+  outline: none;
+}
+
+.navRight {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+  color: #fff;
+ 
+}
+.userContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.userContainer *,
+#notificationIcon{
+    cursor: pointer;
+}
+
+.sideMenuContainer {
+  grid-area: side;
+  background-color: aqua;
 }
