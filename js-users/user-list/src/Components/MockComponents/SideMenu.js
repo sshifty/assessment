@@ -2,7 +2,7 @@ import styles from './Mock.module.css';
 
 const Sidemenu = () => {
     return (
-        <div>
+        <div className={styles.sideMenuContainer}>
             
         </div>
     );

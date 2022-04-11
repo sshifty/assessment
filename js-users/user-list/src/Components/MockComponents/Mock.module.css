@@ -1,0 +1,9 @@
+.navContainer{
+    grid-area: nav;
+    background-color: var(--nav-purple);
+}
+
+.sideMenuContainer{
+    grid-area:side;
+    background-color: aqua;
+}

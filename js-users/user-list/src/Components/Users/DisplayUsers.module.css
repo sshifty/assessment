@@ -1,5 +1,6 @@
 .displayUsers{
     height: 100%;
+    grid-area: main;
     display: flex;
     justify-content: space-between;
     flex-direction: column;    
