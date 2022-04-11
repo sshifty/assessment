@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import moment from "moment";
 
-import styles from "./SingleUser.module.css";
-const SingleUser = (props) => {
+import styles from "./UserTable.module.css";
+const UserTable = (props) => {
   const { currentUsers, fetchUsers } = props;
 
   const changeStatus = async (user) => {
@@ -17,15 +18,22 @@ const SingleUser = (props) => {
         "https://assessment-users-backend.herokuapp.com/users/" + user.id,
         requestOptions
       );
-      
+
       fetchUsers();
     } catch (e) {
       console.log(e);
     }
   };
   return (
-    <div className={styles.singleUser}>
-      <table>
+    <div className={styles.userTableContainer}>
+      <div className={styles.userTableHeader}>
+        <Link to="new">
+          <button className={`${styles.btn} ${styles.btnMain}`}>
+            Add Member
+          </button>
+        </Link>
+      </div>
+      <table className={styles.userTable}>
         <thead>
           <tr>
             <th>First Name</th>
@@ -49,14 +57,20 @@ const SingleUser = (props) => {
                   {moment(user.created_at).format("YYYY/MM/DD, HH:mm ")}
                 </td>
                 <td>
-                  <button className={`${styles.btn} ${styles.btnEdit}`}>
-                    Edit
-                  </button>
+                  <Link to={`${user.id}/edit`}>
+                    <button className={`${styles.btn} ${styles.btnMain}`}>
+                      Edit
+                    </button>
+                  </Link>
                 </td>
                 <td>
                   <button
                     onClick={() => changeStatus(user)}
-                    className={`${styles.btn} ${styles.btnStatus}`}
+                    className={`${styles.btn} ${
+                      user.status === "locked"
+                        ? styles.btnActive
+                        : styles.btnLock
+                    }`}
                   >
                     {user.status === "locked" ? "Activate" : "Lock"}
                   </button>
@@ -70,4 +84,4 @@ const SingleUser = (props) => {
   );
 };
 
-export default SingleUser;
+export default UserTable;

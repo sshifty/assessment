@@ -14,4 +14,17 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+  font-family:  'Arial', Georgia, Times, 'Times New Roman', serif
+}
+
+/*Main colors*/
+
+:root {
+  --main-purple: #6f5cc4;
+  --main-grey: #939dad;
+  --main-text: #434e64;
+  --active-bg: #c5ebc6;
+  --active-text: #5fbf66;
+  --lock-bg: #f7c7c4;
+  --lock-text: #ec4738;
 }

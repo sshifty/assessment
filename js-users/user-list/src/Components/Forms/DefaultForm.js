@@ -1,7 +1,7 @@
 import styles from "./Form.module.css";
 
 const Defaultform = (props) => {
-  const { onSubmit, handleChange,errors,user } = props;
+  const { onSubmit, handleChange, errors, user } = props;
   return (
     <div className={styles.formContainer}>
       <form onSubmit={onSubmit}>
@@ -14,7 +14,7 @@ const Defaultform = (props) => {
             type="text"
             id="first_name"
             maxLength={20}
-            value={user.first_name}
+            value={user.first_name || ""}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -26,7 +26,7 @@ const Defaultform = (props) => {
             type="text"
             id="last_name"
             maxLength={20}
-            value={user.last_name}
+            value={user.last_name || ""}
           />
         </div>
         <button>Submit</button>
