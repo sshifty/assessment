@@ -37,3 +37,14 @@ li.disabled a {
 li.selected a {
   background-color: var(--main-purple);
 }
+
+@media only screen and (max-width: 800px) {
+  .react-paginate li:not(.previous, .next, .selected){    
+    display: none;
+  }
+  .react-paginate li a{
+    margin:.1rem;
+    padding:.3rem;
+    font-size: .9rem;
+  }
+}

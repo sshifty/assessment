@@ -6,7 +6,8 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import ChatIcon from "@mui/icons-material/Chat";
 import styles from "./Mock.module.css";
 
-const Sidemenu = () => {
+const SideMenu = props => {
+  const {setToggle, toggle } = props;
   const { pathname } = useLocation();
   const menuNames = [
     { name: "profile", icon: <PersonOutlineIcon /> },
@@ -15,7 +16,11 @@ const Sidemenu = () => {
     { name: "chat", icon: <ChatIcon /> },
   ];
   return (
-    <div className={styles.sideMenuContainer}>
+    <div
+      className={`${styles.sideMenuContainer} ${
+        toggle ? styles.visible : styles.hidden
+      }`}
+    >
       <div className={styles.sideMenu}>
         {menuNames.map((menu) => {
           return (
@@ -25,6 +30,7 @@ const Sidemenu = () => {
                 pathname === "/" + menu.name ? styles.active : null
               }`}
               key={uuidv4()}
+              onClick={()=>setToggle(false)}
             >
               {menu.icon}
               <h3>{menu.name === "" ? "users" : menu.name}</h3>
@@ -36,4 +42,4 @@ const Sidemenu = () => {
   );
 };
 
-export default Sidemenu;
+export default SideMenu;

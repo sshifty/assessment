@@ -90,7 +90,9 @@ input[type="text"]:focus {
 .sideMenuItem:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
-
+.mobileMenu {
+  display: none;
+}
 .active {
   border-left: 4px solid #fff;
 }
@@ -98,11 +100,53 @@ input[type="text"]:focus {
 .mockComponentContainer {
   grid-area: main;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   align-items: flex-start;
 }
-.message{
+.message {
   display: flex;
   align-items: center;
-  gap:1rem;
+  gap: 1.5rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .userContainer {
+    display: none;
+  }
+  .mobileMenu {
+    display: flex;
+    gap: 1rem;
+  }
+  .mobileMenu > * {
+    cursor: pointer;
+  }
+  .navContainer {
+    position: relative;
+  }
+  .navRight {
+    flex: 0;
+  }
+  .sideMenuContainer {
+    position: absolute;
+  }
+  .active {
+    border: none;
+  }
+  body {
+    overflow: hidden;
+  }
+  .visible {
+    top: 100%;
+    right: 0;
+    transition: 0.3s;
+  }
+  .hidden {
+    opacity: 0;
+    top: 100%;
+    right: -50%;
+    transition: 0.3s;
+  }
+  .businessContainer h1 {
+    display: none;
+  }
 }
