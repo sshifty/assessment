@@ -94,3 +94,7 @@ input[type="text"]:focus {
 .active{
   border-left: 4px solid #fff;
 }
+
+.mockComponent{
+  
+}
