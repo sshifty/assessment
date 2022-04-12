@@ -4,7 +4,7 @@ const Defaultform = (props) => {
   const { onSubmit, handleChange, errors, user } = props;
   return (
     <div className={styles.formContainer}>
-      <form onSubmit={onSubmit}>
+      <form  onSubmit={onSubmit}>
         <div className={styles.inputContainer}>
           <label htmlFor="first_name">
             First Name: <span>{errors.first_name}</span>

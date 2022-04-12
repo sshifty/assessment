@@ -57,7 +57,6 @@ input[type="text"]:focus {
   align-items: center;
   gap: 1.5rem;
   color: #fff;
- 
 }
 .userContainer {
   display: flex;
@@ -65,11 +64,26 @@ input[type="text"]:focus {
   gap: 0.5rem;
 }
 .userContainer *,
-#notificationIcon{
-    cursor: pointer;
+#notificationIcon {
+  cursor: pointer;
 }
 
 .sideMenuContainer {
   grid-area: side;
-  background-color: aqua;
+  background-color: var(--main-purple);
+}
+.sideMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+}
+.sideMenuItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+.sideMenuItem:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
