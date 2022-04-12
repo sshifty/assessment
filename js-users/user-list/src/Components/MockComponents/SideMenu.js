@@ -1,13 +1,13 @@
+import { Link, useLocation } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import GroupIcon from "@mui/icons-material/Group";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ChatIcon from "@mui/icons-material/Chat";
-import { Link, useLocation } from "react-router-dom";
 import styles from "./Mock.module.css";
 
 const Sidemenu = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
   const menuNames = [
     { name: "profile", icon: <PersonOutlineIcon /> },
     { name: "", icon: <GroupIcon /> },
@@ -24,6 +24,7 @@ const Sidemenu = () => {
               className={`${styles.sideMenuItem} ${
                 pathname === "/" + menu.name ? styles.active : null
               }`}
+              key={uuidv4()}
             >
               {menu.icon}
               <h3>{menu.name === "" ? "users" : menu.name}</h3>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
 import styles from "./UserTable.module.css";
@@ -46,7 +47,7 @@ const UserTable = (props) => {
         <tbody>
           {currentUsers.map((user) => {
             return (
-              <tr>
+              <tr key={uuidv4()}>
                 <td className={user.status === "locked" ? styles.locked : null}>
                   {user.first_name}
                 </td>
