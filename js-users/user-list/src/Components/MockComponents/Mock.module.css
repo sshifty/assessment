@@ -133,7 +133,7 @@ input[type="text"]:focus {
     border: none;
   }
   body {
-    overflow: hidden;
+    overflow-x: hidden;
   }
   .visible {
     top: 100%;

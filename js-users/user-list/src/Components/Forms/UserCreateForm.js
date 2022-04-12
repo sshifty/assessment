@@ -85,7 +85,6 @@ const UserCreateForm = () => {
       console.log(e);
     }
   };
-  console.log(user);
   return (
     <Defaultform
       onSubmit={onSubmit}

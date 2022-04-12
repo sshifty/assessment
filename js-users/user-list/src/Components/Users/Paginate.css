@@ -1,5 +1,5 @@
-.react-paginate { 
-  align-self: center; 
+.react-paginate {
+  align-self: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,7 +9,7 @@
 li a {
   border-radius: 7px;
   padding: 0.1rem 1rem;
-  margin:0 .3rem;
+  margin: 0 0.3rem;
   border: gray 1px solid;
   cursor: pointer;
 }
@@ -39,12 +39,15 @@ li.selected a {
 }
 
 @media only screen and (max-width: 800px) {
-  .react-paginate li:not(.previous, .next, .selected){    
+  .react-paginate {
+    margin-top: 1rem;
+  }
+  .react-paginate li:not(.previous, .next, .selected) {
     display: none;
   }
-  .react-paginate li a{
-    margin:.1rem;
-    padding:.3rem;
-    font-size: .9rem;
+  .react-paginate li a {
+    margin: 0.1rem;
+    padding: 0.3rem;
+    font-size: 0.9rem;
   }
 }
