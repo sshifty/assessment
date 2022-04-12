@@ -128,6 +128,7 @@ input[type="text"]:focus {
   }
   .sideMenuContainer {
     position: absolute;
+    z-index: 1000;
   }
   .active {
     border: none;
