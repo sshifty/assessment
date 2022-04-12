@@ -83,7 +83,14 @@ input[type="text"]:focus {
   gap: 1rem;
   padding: 1rem;
   cursor: pointer;
+  color:inherit;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 .sideMenuItem:hover {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.active{
+  border-left: 4px solid #fff;
 }

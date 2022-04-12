@@ -1,7 +1,57 @@
-.formContainer{
-    grid-area:main;
-    display: flex;
-    justify-content: center;
-    padding:1rem;
-    
+.formContainer {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.inputContainer input[type="text"] {
+  padding: 0.5rem;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+.inputContainer input[type="text"]:focus {
+  border: 2px solid var(--main-purple);
+}
+.btn {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--main-purple);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--nav-purple);
+}
+.btnBack {
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.btnBack * {
+  width: 30px;
+  height: 30px;
+}
+.spanError {
+  font-size: 0.8rem;
+  font-weight: 550;
+  color: var(--lock-text);
 }

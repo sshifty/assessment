@@ -1,13 +1,18 @@
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import { Link } from "react-router-dom";
 import styles from "./Form.module.css";
 
 const Defaultform = (props) => {
   const { onSubmit, handleChange, errors, user } = props;
   return (
     <div className={styles.formContainer}>
-      <form  onSubmit={onSubmit}>
+      <form className={styles.form} onSubmit={onSubmit}>
         <div className={styles.inputContainer}>
           <label htmlFor="first_name">
-            First Name: <span>{errors.first_name}</span>
+            First Name{" "}
+            <span className={styles.spanError}>
+              <em>{errors.first_name}</em>
+            </span>
           </label>
           <input
             onChange={handleChange}
@@ -19,7 +24,10 @@ const Defaultform = (props) => {
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="last_name">
-            Last Name: <span>{errors.last_name}</span>
+            Last Name{" "}
+            <span className={styles.spanError}>
+              <em>{errors.last_name}</em>
+            </span>
           </label>
           <input
             onChange={handleChange}
@@ -29,8 +37,11 @@ const Defaultform = (props) => {
             value={user.last_name || ""}
           />
         </div>
-        <button>Submit</button>
+        <button className={`${styles.btn} ${styles.btnSubmit}`}>Submit</button>
       </form>
+      <Link to="/" className={`${styles.btn} ${styles.btnBack}`}>
+        <ArrowLeftIcon />
+      </Link>
     </div>
   );
 };
