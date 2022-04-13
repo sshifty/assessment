@@ -9,7 +9,7 @@ const Defaultform = (props) => {
       <form className={styles.form} onSubmit={onSubmit}>
         <div className={styles.inputContainer}>
           <label htmlFor="first_name">
-            First Name{" "}
+            First Name
             <span className={styles.spanError}>
               <em>{errors.first_name}</em>
             </span>
@@ -19,12 +19,12 @@ const Defaultform = (props) => {
             type="text"
             id="first_name"
             maxLength={20}
-            value={user.first_name || ""}
+            value={user.first_name}
           />
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="last_name">
-            Last Name{" "}
+            Last Name
             <span className={styles.spanError}>
               <em>{errors.last_name}</em>
             </span>
@@ -34,7 +34,7 @@ const Defaultform = (props) => {
             type="text"
             id="last_name"
             maxLength={20}
-            value={user.last_name || ""}
+            value={user.last_name}
           />
         </div>
         <button className={`${styles.btn} ${styles.btnSubmit}`}>Submit</button>

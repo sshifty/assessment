@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { USERS_GET_URL } from "../constants";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
-
 import styles from "./UserTable.module.css";
+
 const UserTable = (props) => {
   const { currentUsers, fetchUsers } = props;
 
@@ -15,10 +16,7 @@ const UserTable = (props) => {
       }),
     };
     try {
-      const data = await fetch(
-        "https://assessment-users-backend.herokuapp.com/users/" + user.id,
-        requestOptions
-      );
+      const data = await fetch(USERS_GET_URL + user.id, requestOptions);
 
       fetchUsers();
     } catch (e) {

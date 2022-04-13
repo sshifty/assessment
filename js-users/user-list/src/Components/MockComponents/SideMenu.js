@@ -30,7 +30,7 @@ const SideMenu = props => {
                 pathname === "/" + menu.name ? styles.active : null
               }`}
               key={uuidv4()}
-              onClick={()=>setToggle(false)}
+              onClick={setToggle?()=>setToggle(false):null}
             >
               {menu.icon}
               <h3>{menu.name === "" ? "users" : menu.name}</h3>

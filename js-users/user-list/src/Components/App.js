@@ -9,7 +9,7 @@ import styles from "./App.module.css";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 700;
+  const breakpoint = 750;
   useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
     // subscribe to window resize event "onComponentDidMount"

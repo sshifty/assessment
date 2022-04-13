@@ -1,34 +1,24 @@
 import { useEffect, useState } from "react";
+import useFetch from "../useFetch";
 import UserTable from "./UserTable";
-import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import { USERS_GET_URL } from "../constants";
 import styles from "./DisplayUsers.module.css";
 import "./Paginate.css";
 
 const DisplayUsers = ({ itemsPerPage }) => {
-  const [users, setUsers] = useState([]);
   const [currentUsers, setCurrentUsers] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const fetchUsers = async () => {
-    try {
-      const data = await fetch(
-        "https://assessment-users-backend.herokuapp.com/users"
-      );
-      const fetchedData = await data.json();
-      setUsers(fetchedData.sort((a, b) => a.id - b.id));
-    } catch (e) {
-      //do something when there is a network error
-      console.log(e);
-    }
-  };
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-  useEffect(() => {
+  const { users, fetchUsers } = useFetch(USERS_GET_URL);
+
+  const setUsersOnPageChange = () => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentUsers(users.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(users.length / itemsPerPage));
+  };
+  useEffect(() => {
+    setUsersOnPageChange();
   }, [itemOffset, itemsPerPage, users]);
 
   // Invoke when user click to request another page.
@@ -38,7 +28,7 @@ const DisplayUsers = ({ itemsPerPage }) => {
   };
   return (
     <div className={styles.displayUsers}>
-      <UserTable currentUsers={currentUsers} fetchUsers={fetchUsers} />      
+      <UserTable currentUsers={currentUsers} fetchUsers={fetchUsers} />
       <ReactPaginate
         className={"react-paginate"}
         breakLabel="..."
