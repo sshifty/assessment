@@ -79,7 +79,7 @@ const UserCreateForm = () => {
         navigate("/");
       }
     } catch (e) {
-      console.log(e);
+      alert("Network Error, try to reload the page!");
     }
   };
   return (

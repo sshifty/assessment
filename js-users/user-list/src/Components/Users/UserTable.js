@@ -17,10 +17,9 @@ const UserTable = (props) => {
     };
     try {
       const data = await fetch(USERS_GET_URL + user.id, requestOptions);
-
       fetchUsers();
     } catch (e) {
-      console.log(e);
+      alert("Network Error, try to reload the page!");
     }
   };
   return (
