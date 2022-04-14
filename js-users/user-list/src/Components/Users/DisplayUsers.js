@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import useFetch from "../useFetch";
+import useFetch from "../../Hooks/useFetch";
 import UserTable from "./UserTable";
 import ReactPaginate from "react-paginate";
-import { USERS_GET_URL } from "../constants";
+import { USERS_GET_URL } from "../../Constants/constants";
 import styles from "./DisplayUsers.module.css";
 import "./Paginate.css";
 

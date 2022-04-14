@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Defaultform from "./DefaultForm";
-import { USERS_GET_URL } from "../constants";
+import { USERS_GET_URL } from "../../Constants/constants";
 
 const UserCreateForm = () => {
   const [errors, setErrors] = useState({});

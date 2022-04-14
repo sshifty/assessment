@@ -2,8 +2,7 @@ import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import { Link } from "react-router-dom";
 import styles from "./Form.module.css";
 
-const Defaultform = (props) => {
-  const { onSubmit, handleChange, errors, user } = props;
+const Defaultform = ({ onSubmit, handleChange, errors, user }) => {
   return (
     <div className={styles.formContainer}>
       <form className={styles.form} onSubmit={onSubmit}>
